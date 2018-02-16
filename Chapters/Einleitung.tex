@@ -1,0 +1,26 @@
+\section{Einführung}
+Die Fähigkeit eines Roboters, sich selbst zu lokalisieren, ist das Grundkonzept für autonome Rbotersysteme. Die Aufgabe des Roboters ist es, durch Auswertung der Sensordaten herauszufinden, wo er ist.
+\\Um das zu schaffen, wird eine Filterung im Robotersystem eingesetzt. Schätzung einer Starrkörperbewegung, d.h.Gleichzeitige Schätzung
+von Transtorlation und Rotation, ist in vielen Situationen ein großes Problem.
+Dazu muss die Anwendungen robotische Wahrnehmung und Verarbeitung von Sensordaten gleichzeitig einsetzen. Dieses Problem ist aus zwei Gründen besonders schwierig.
+\\Erstens hat es eine nichtlineare Struktur, weil die Werte 
+auf einer instationären nichtlinearen Funktionsbereich definiert sind. Das Problem kann mit Hilfe der Mannigfaltigkeiten der Starrkörperbewegungen in der Ebene SE(2) gelöst werden. Zweitens, es gibt keine kanonische Möglichkeit, Abhängigkeiten zwischen Position und Orientierung zu beschreiben. Der SE(2)-Filter ist eine von ISAS selbst entwickeltes Verfahren, das zur Roboterlokalisierug verwendet werden kann. In dieser Arbeit wird eine neuartige Wahrscheinlichkeitsverteilung, die Bingham-Verteilung, eingesetzt, welche in der Lage ist, die zugrunde liegende Struktur von der planarer starrer Transformationen darzustellen. Das ist durch die Verwendung von duale Quaternionen (beschränkt auf planare Transformationen) realisiert. Daher ist es nicht notwendig, eine gesamte Matrix zur Beschreibung der tatsächlichen Transformation zu erstellen. Außerdem kann der Bingham-Verteilung zur Darstellung unsicherer Orientierungen durch Quaternionen repräsentiert werden, was klassischen Messupdate- und Fusionsszenarien wie Beyas-Filterung möglich macht.
+\\Zur Evaluierung des SE(2)-Filters wird Partikel-Filter in diese Arbeit implementiert. Die Partikel sind Proben, die die aktuelle Positionen und Orientierungen des Roboters schätzen. Auf diesen Teil werden wir noch später eingehen.
+\\Es gibt zwei wesentliche Teile, die implementiert werden müssen, nämlich das System und das Messmodell. 
+Abschließend wird diese Arbeit mit einem mobilen Roboter und einer Kamera ausgewertet. Die Kamera wird verwendet, um die tatsächliche Position des Roboters zu verfolgen, die dann mit der geschätzten Ortskurve verglichen wird.
+\\Zur Durchführung haben wir im Rahmen des Praktikum Forschungsprojekts 'Anthropomatik praktisch erfahren' einen etwa zehn Zentimeter hohen Laufroboter zur Verfügung gestellt bekommen. Dieser besitzt drei Beine, mithilfe derer er sich fortbewegen kann und vier Ultraschallsensoren, die für die Erkundung der Umwelt verwendet werden können. Weitere Details bzgl. des Aufbaus des Crawlers können Abschnitt 6 entnommen werden.
+
+\clearpage
+\section{Aufgabenstellung}
+\begin{itemize}
+    \item[-]Einarbeitung in die nötigen Grundlagen (Bayes-Filterung, duale Quaternionen, Bingham Verteilung).
+    \item[-]Einarbeitung in das am ISAS entwickelte Verfahren.
+    \item[-]Entwurf geeigneter System- und Messmodelle unter Verwendung von Vorarbeiten der letzten Semester.
+    \item[-]Implementierung des Verfahrens und eines Vergleichsverfahrens (z. B. UKF oder Partikelfilter)
+    \item[-]Evaluation des Verfahrens in Simulationen und mit realen Daten
+\end{itemize}
+
+
+
+
+\clearpage

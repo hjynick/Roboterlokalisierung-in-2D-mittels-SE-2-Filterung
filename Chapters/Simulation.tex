@@ -1,0 +1,31 @@
+\section{Simulation}
+Zur Überprüfung der Implementierung wurde die Bewegung des Crawlers zunächst simuliert. Die Simulation bietet ein Ground Truth ohne aufwändiges Kameratracking vorteilhaft, sowie verschiedene Karten. Diese können als beliebige konvexe Polygone definiert werden, in denen sich der Crawler frei bewegen kann.
+Um Komponenten der Simulation zur Auswertung des Experiments wiederverwenden zu können, wurde auf einen modularen Aufbau geachtet. Die grobe Struktur des Frameworks wird in \ref{fig:class} verdeutlicht. Es gibt eine einheitliche Schnittstelle, die zur Kommunikation mit der realen Crawler-Hardware, sowie dem simuliertem Crawler genutzt wird. Die Steuerung ist über drei verschiedene Modi möglich:
+\begin{itemize}
+	\item Auswahl der Bewegungsanweisungen durch den Benutzer
+	\item Zufällige Bewegungsanweisungen
+	\item Wiedergabe eines aufgezeichneten Bewegungspfads des echten Crawlers
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{Images/class.png}  
+	\caption{Aufbau des Simulationsframeworks}
+	\label{fig:class}
+\end{figure}
+
+Crawler Modell
+Das vereinfachte Modell des Crawlers, das zur Simulation verwendet wurde ist in \ref{fig:ModelCrawler} zu sehen. Der Ursprung des Koordinatensystems liegt auf der vorderen roten LED, die zum Tracking der Position verwendet wurde. Der eigentlich kegelförmige Messbereich der vier Ultraschallsensoren wurde als Halbgerade modelliert.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[]{Images/ModelCrawler}  
+	\caption{In der Simulation verwendetes Schema des Crawlers mit lokalem Koordinatensystem. Markeirt sind die vier Ultraschallsensoren mit Messbereich, sowie die zwei verschiedenfarbenen LEDs.}
+	\label{fig:ModelCrawler}
+\end{figure}
+
+\include{Chapters/Systemmodell}
+
+\include{Chapters/Messmodell}
+\input{Chapters/ProgressiveUpdates}
+

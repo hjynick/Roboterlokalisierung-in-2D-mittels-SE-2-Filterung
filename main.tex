@@ -1,0 +1,53 @@
+\documentclass[cover]{isas-seminar}
+
+\input{definitions}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+
+
+
+% Hier die Art der Veranstaltung eintragen (Seminar, Proseminar, Praktikum)
+\eventtype{Praktikum} 
+%\eventtype{Seminar} 
+%\eventtype{Proseminar}
+ 
+% Hier Titel der Veranstaltung eintragen 
+\seminartitle{Forschungsprojekt Anthropomatik praktisch erfahren}
+%\seminartitle{Modellbasierte Verfahren für intelligente Systeme}
+
+\title{Roboterlokalisierung in 2D mittels SE(2) Filterung}
+\author{He Jingyu, Martin Miller}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In der Robotik spielt die Lokalisierung des Roboters eine große Rolle. Dabei sollen die Position sowie die Orientierung des Roboters erfasst werden. In einem zweidimensionalen Szenario kann man die Pose als Element der speziellen Euklidischen Gruppe SE(2) auffassen, welche alle Kombinationen von Rotationen und Translationen in 2D enthält. Um die Pose des Roboters basierend auf verrauschten Sensordaten zu schätzen, kommen häufig Kalman-Filter und ähnliche Verfahren zum Einsatz. Am ISAS wurde eine Methode entwickelt, welche das besondere Verhalten der SE(2), insbesondere die Periodizität der Orientierung, besser behandelt als traditionelle Verfahren. In diesem Praktikumsprojekt soll das am ISAS entwickelte Verfahren zur SE(2) Schätzung in einem praktischen Szenario implementiert und evaluiert werden. Dazu kommt der am ISAS entwickelte Crawler zum Einsatz.
+
+
+
+\end{abstract}
+\clearpage
+\tableofcontents
+\cleardoublepage
+
+\input{includes}
+\newpage
+
+
+
+
+\bibliographystyle{source}
+
+\begin{thebibliography}{99}
+
+\bibitem{jia2013dual}Jia, Yan-Bin (2013). Dual quaternion. Com S, 477, 577.
+\bibitem{kurz2014recursive}Kurz, G., Gilitschenski, I., Julier, S.,  Hanebeck, U. D. (2014). Recursive Bingham filter for directional estimation involving 180 degree symmetry. Journal of Advances in Information Fusion, 9(2), 90-105.
+\bibitem{gilitschenki2014new}Gilitschenski, I., Kurz, G., Julier, S. J.,  Hanebeck, U. D. (2014, July). A new probability distribution for simultaneous representation of uncertain position and orientation. In Information Fusion (FUSION), 2014 17th International Conference on (pp. 1-7). IEEE.
+\bibitem{kurz2016Recursive}Kurz, G., Gilitschenski, I.,  Hanebeck, U. D. (2016). Recursive Bayesian filtering in circular state spaces. IEEE Aerospace and Electronic Systems Magazine, 31(3), 70-87.
+\bibitem{gilitschenski2015}Gilitschenski, I., Kurz, G.,  Hanebeck, U. D. (2015, September). A stochastic filter for planar rigid-body motions. In Multisensor Fusion and Integration for Intelligent Systems (MFI), 2015 IEEE International Conference on (pp. 13-18). IEEE.
+\bibitem{kurz2014}Kurz, G., Gilitschenski, I.,  Hanebeck, U. D. (2014, June). Nonlinear measurement update for estimation of angular systems based on circular distributions. In American Control Conference (ACC), 2014 (pp. 5694-5699). IEEE.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,36 @@
+\subsection{Progressive Updates}
+
+Nach Anwendung des Systemmodells im Prediction-Schritts folgt  der Aktualisierungsschritt, der den geschätzten Zustand $x_{t}^{e}$ durch Einbeziehung der Messung $z_{t}$ korrigiert
+Beim Progressiven Update werden vom aktuell geschätze Systemzustand $x_{t}^{e}$ dazu zunächst deterministisch Proben gezogen. Anstatt diese in einem Schritt mit den Werten der Likelihood-Funktion neu zu gewichten, wird iterativ vorgegangen [4]. Dies ist nach der Regel von Bayes möglich, wenn die $\lambda_1 + \lambda_s$ eine Zerlegung der $1$ bilden. Dadurch kann eine Degenerierung der Proben mit Likelihoodwerten nahe null vermieden werden. Degenerierte Proben verringern die Genauigkeit des Filters. Außerdem ermöglicht das Progressive Update die Korrektur des geschätzten Orts ohne die Messfunktion $h$ invertieren zu müssen. Gemessene Werte können direkt in die Likelihood eingesetzt werden.
+
+\begin{align*}
+	f(\vec{x} | \vec{z}) \propto f(\vec{z} | \vec{x}) * f(\vec{x})\\
+	= (f(\vec{z} | \vec{x})^{\lambda_1} * ... * f(\vec{z} | \vec{x})^{\lambda_s}) * f(\vec{x})
+\end{align*}
+
+
+ Durch den folgenden Ablauf wird garantiert, dass der Quotient zwischen dem kleinsten neuen Gewicht
+$l_{min}$ und das größte neue Gewicht $l_{max}$ nicht über einen vorbestimmten Schwellwert steigt. Dieser Schwellwert wird mit $\tau$ bezeichnet.
+\\
+
+\begin{alogrithm}
+	\caption{Ablauf des Progressiven Updates}\label{update}
+	\begin{algorithmic}[1]
+		\Procedure{Update}{measurement $z_t$, likelihood $f(z_t | x_t)$, predicted density $x_{t}^{e}$}
+	  \State $\Lambda\leftarrow 1$
+	  \State $x_{t} \leftarrow x_{t}^{e}$
+	  \While{ $\Lambda>0$ }
+	  \State $(s_{1},...,s_{L},\omega_{1},...,\omega_{L})\leftarrow \text{sampleDeterministicly}(x_t)$
+	  \State $\omega_{min}\leftarrow min(f(z_{k}|s_{k}))$
+      \State $\omega_{max}\leftarrow max(f(z_{k}|s_{k}))$
+	  \State $\lambda \leftarrow min(\Lambda, \frac{log(\tau)}{log(\omega_{min}/\omega_{max})})$
+	  \For{$j \leftarrow 1 \textbf{to} L$}
+		\State $\omega_{k} \leftarrow \omega_{k}\cdot f(z_{k}|x_{k})^{\lambda}$
+      \EndFor
+	  \State $x_t \leftarrow matchBingham(s_{1},...,s_{L},\omega_{1},...,\omega_{L})$
+	  \State $\Lambda\leftarrow\Lambda-\lambda$
+    \EndWhile
+	\EndProcedure
+  \end{algorithmic}
+
+\end{alogrithm}
